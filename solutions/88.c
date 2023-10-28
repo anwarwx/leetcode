@@ -2,7 +2,20 @@
 #include <stdlib.h>
 
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
-  
+  unsigned int i = m;
+  unsigned int j = 0;
+  for (; i < nums1Size; i++, j++) nums1[i] = nums2[j];
+
+  int l = nums1Size;
+  for (i = 0; i < l; i++) {
+    for (j = i+1; j < l; j++) {
+      if (nums1[i] > nums1[j]) {
+        int t = nums1[j];
+        nums1[j] = nums1[i];
+        nums1[i] = t;
+      }
+    }
+  }
 }
 
 void print(int* arr, int size) {
@@ -11,7 +24,7 @@ void print(int* arr, int size) {
   for (; i < size-1; i++) {
     printf("%d, ", arr[i]);
   }
-  printf("%d]\n", arr[i+1]);
+  printf("%d]\n", arr[i]);
 }
 
 int main(void) {
