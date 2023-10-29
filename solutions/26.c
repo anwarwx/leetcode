@@ -2,35 +2,32 @@
 #include <stdlib.h>
 
 int removeDuplicates(int* nums, int numsSize) {
-    const int l = numsSize;
-    unsigned int i = 0, m = 0;
-    int h[l];
-    
-    for(; i < l; i++) {
-        if (m < nums[i]) m = nums[i];
-        h[i] = -1;
-    }
-    
-    unsigned int j, k = 0;
-    for (i = 0; i < l; i++) {
-        int FLAG = 0;
-        for (j = 0; j < k; j++) {
-            if (nums[i] == h[j]) {
-                FLAG = 1;
-                nums[i] = m+1;
-                break;
-            }
-        }
-        if (!FLAG) {
-            h[j] = nums[i];
-            k++;
-        }
-    }
+  const int l = numsSize;
+  unsigned int i = 0, m = 0;
+  int h[l];
 
-    for (i = 0; i < k; i++) nums[i] = h[i];
-    for (i = k; i < l; i++) nums[i] = -1;
+  for(; i < l; i++) {
+    if (m < nums[i]) m = nums[i];
+    h[i] = -1;
+  }
 
-    return k;
+  unsigned int j, k = 0;
+  for (i = 0; i < l; i++) {
+    int FLAG = 0;
+    for (j = 0; j < k; j++) {
+      if (nums[i] == h[j]) {
+        FLAG = 1;
+        nums[i] = m+1;
+        break;
+      }
+    }
+    if (!FLAG) h[j] = nums[i]; k++;
+  }
+
+  for (i = 0; i < k; i++) nums[i] = h[i];
+  for (i = k; i < l; i++) nums[i] = -1;
+
+  return k;
 }
 
 void print(int* arr, int size) {

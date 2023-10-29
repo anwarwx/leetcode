@@ -2,32 +2,32 @@
 #include <stdlib.h>
 
 int removeElement(int* nums, int numsSize, int val) {
-    const int l = numsSize;
-    unsigned int i = 0;
-    int k = 0, h = 0;
-    
-    for (; i < l; i++) {
-        if (nums[i] == val) k+=1;
-        if (h < nums[i]) h=nums[i];
+  const int l = numsSize;
+  unsigned int i = 0;
+  int k = 0, h = 0;
+
+  for (; i < l; i++) {
+    if (nums[i] == val) k+=1;
+    if (h < nums[i]) h=nums[i];
+  }
+
+  for (i = 0; i < l; i++) if (nums[i] == val) nums[i] = h+1;
+
+  unsigned int j;
+  for (i = 0; i < l; i++) {
+    for (j = i+1; j < l; j++) {
+      if (nums[i] > nums[j]) {
+        int t = nums[j];
+        nums[j] = nums[i];
+        nums[i] = t;
+      }
     }
+  }
 
-    for (i = 0; i < l; i++) if (nums[i] == val) nums[i] = h+1;
-
-    unsigned int j;
-    for (i = 0; i < l; i++) {
-        for (j = i+1; j < l; j++) {
-            if (nums[i] > nums[j]) {
-                int t = nums[j];
-                nums[j] = nums[i];
-                nums[i] = t;
-            }
-        }
-    }
-
-    i = l - k;
-    for (; i < l; i++) nums[i] = -1;
-    
-    return l-k;
+  i = l - k;
+  for (; i < l; i++) nums[i] = -1;  
+  
+  return l-k;
 }
 
 void print(int* arr, int size) {
