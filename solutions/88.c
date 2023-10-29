@@ -2,9 +2,8 @@
 #include <stdlib.h>
 
 void merge(int* nums1, int nums1Size, int m, int* nums2, int nums2Size, int n) {
-  int l = nums1Size;
-  unsigned int i = m;
-  unsigned int j = 0;
+  const int l = nums1Size;
+  unsigned int i = m, j = 0;
 
   for (; i < l; i++, j++) nums1[i] = nums2[j];
 
