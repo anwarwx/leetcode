@@ -11,7 +11,7 @@ int majorityElement(std::vector<int>& nums) {
     else m[n] = 1;
   }
 
-  for (auto [k, v] : m) if (v > o) return k;
+  for (auto const& [k, v] : m) if (v > o) return k;
 
   return 1;
 }
@@ -26,7 +26,7 @@ void print(std::vector<int>& nums) {
 
 int main() {
   std::vector<int> nums {2,2,1,1,1,2,2};
-  std::cout << majorityElement(nums) << '\n';
+  std::cout << majorityElement(nums) << '\n'; // 2
 
   return 0;
 }
